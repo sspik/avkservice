@@ -2,5 +2,5 @@
 module.exports = {
     reactStrictMode: true,
     basePath: '/avkservice.github.io',
-    assetPrefix: '/avkservice.github.io',
+    assetPrefix: '/avkservice.github.io/',
 }
