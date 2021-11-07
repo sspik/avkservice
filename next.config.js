@@ -1,4 +1,4 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-    assetPrefix: '/avkservice/'
+   assetPrefix: 'https://innerhard.github.io/avkservice/'
 }
