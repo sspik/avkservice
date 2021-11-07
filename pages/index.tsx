@@ -1,6 +1,6 @@
-import type {NextPage} from 'next'
-import {Banner, Cards, LayoutPage, Stock} from '@components'
-import {theme} from "../src";
+import type { NextPage } from 'next'
+import { Banner, CameraView, Cards, LayoutPage, Stock } from '@components'
+import { theme } from '../src'
 
 const Home: NextPage = () => {
     const cards = [
@@ -23,6 +23,7 @@ const Home: NextPage = () => {
             columnWidthDesktop: 3,
             link: '#',
             alt: 'awdawdawdaw',
+
         },
         {
             id: 3,
@@ -54,18 +55,58 @@ const Home: NextPage = () => {
             alt: 'awdawdawdaw',
         },
     ]
+
+    const links = [
+        {
+            id: 1,
+            title: 'string',
+            link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=131072&width=&height=&lang=ru',
+            boxAddress: 'ул.43-й армии, 16',
+        },
+        {
+            id: 2,
+            title: 'string',
+            link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=524288&width=&height=&lang=ru',
+            boxAddress: 'ул.43-й армии, 16',
+        },
+        {
+            id: 3,
+            title: 'string',
+            link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=655360&width=&height=&lang=ru',
+            boxAddress: 'ул.43-й армии, 16',
+        },
+        {
+            id: 4,
+            title: 'string',
+            link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=131072&width=&height=&lang=ru',
+            boxAddress: 'ул.Ульяновых, 12',
+        },
+        {
+            id: 5,
+            title: 'string',
+            link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=131072&width=&height=&lang=ru',
+            boxAddress: 'ул.Ульяновых, 12',
+        },
+        {
+            id: 6,
+            title: 'string',
+            link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=131072&width=&height=&lang=ru',
+            boxAddress: 'ул.Ульяновых, 12',
+        },
+    ]
     return (
         <LayoutPage>
             <div>
                 <Banner
-                    title="РЕМОНТ И ОБСЛУЖИВАНИЕ"
-                    description="гарантия 2 года на все услуги"
-                    formTitle="ЗАПИСЬ В СЕРВИС"
-                    buttonText="Отправить"
+                    title='РЕМОНТ И ОБСЛУЖИВАНИЕ'
+                    description='гарантия 2 года на все услуги'
+                    formTitle='ЗАПИСЬ В СЕРВИС'
+                    buttonText='Отправить'
                 />
-                <Stock description="СКИДКА ПРИ ЗАМЕНЕ МАСЛА" imgLink="./track.png" percent="10%"/>
-                <Cards cards={cards}/>
-                <div style={{height: '96px'}}/>
+                <Stock description='СКИДКА ПРИ ЗАМЕНЕ МАСЛА' imgLink='./track.png' percent='10%' alt='Все акции' />
+                <Cards cards={cards} />
+                <CameraView links={links} />
+                <div style={{ height: '96px' }} />
             </div>
         </LayoutPage>
     )
