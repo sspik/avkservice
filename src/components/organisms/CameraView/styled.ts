@@ -21,7 +21,7 @@ const AddressWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
 
   @media (min-width: ${theme.breakpoint.tabletMd}px) {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 `
 const BoxWrapper = styled.div`

@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react'
+import { Text } from '@components'
 import { Styled } from './styled'
 
 
@@ -28,7 +29,9 @@ export const CameraView: FC<TCameraViewProps> = ({ links }) => {
     }
 
     return (
+
         <Styled.WrapperCameraView>
+            <Text size={32} sizeMob={24} fontWeight={900}>Online-трансляция</Text>
             <Styled.AddressWrapper>
                 {
                     uniqueBox?.map((items) => <Styled.CustomButton onClick={() => handleBoxAddress(items)}>
@@ -48,11 +51,15 @@ export const CameraView: FC<TCameraViewProps> = ({ links }) => {
 
             </Styled.BoxWrapper>
 
-            {links?.filter(({ id, boxAddress }) => id === box && boxAddress === addressBoxes).map(({ link, id }) => {
+            {links?.filter(({ id, boxAddress }) => id === box && boxAddress === addressBoxes).map(({
+                                                                                                       link,
+                                                                                                       id,
+                                                                                                   }) => {
                 return <iframe key={id} className='iv-i'
                                src={link}
                                width='100%' height='252' frameBorder='0' style={{ borderRadius: '8px' }} />
             })}
         </Styled.WrapperCameraView>
+
     )
 }
