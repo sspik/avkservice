@@ -124,12 +124,17 @@ const CarsWrapper = styled.div`
     display: block;
   }
 `
+const CustomLink = styled.a`
+  color: #006d9b;
+  text-decoration: underline;
+`
 
 export const Styled = {
     FormContainer,
     DesktopWrapper,
     MobileWrapper,
     WrapperTextBlock,
+    CustomLink,
     CustomHeading,
     WrapperForm,
     RatingWrapper,

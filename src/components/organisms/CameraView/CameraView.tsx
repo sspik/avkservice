@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
 import { Text } from '@components'
 import { Styled } from './styled'
+import { theme } from '@theme'
 
 
 type TCameraViewProps = {
@@ -34,8 +35,10 @@ export const CameraView: FC<TCameraViewProps> = ({ links }) => {
             <Text size={32} sizeMob={24} fontWeight={900}>Online-трансляция</Text>
             <Styled.AddressWrapper>
                 {
-                    uniqueBox?.map((items) => <Styled.CustomButton onClick={() => handleBoxAddress(items)}>
-                        {items}
+                    uniqueBox?.map((item, index) => <Styled.CustomButton key={index}
+                                                                         backgroundColor={item === addressBoxes ? theme.colors.red.step0 : '#1F1F1F'}
+                                                                         onClick={() => handleBoxAddress(item)}>
+                        {item}
                     </Styled.CustomButton>)
                 }
 
@@ -44,6 +47,7 @@ export const CameraView: FC<TCameraViewProps> = ({ links }) => {
                 {
                     links?.filter(({ boxAddress }) => boxAddress === addressBoxes).map(({ id }, index) =>
                         <Styled.CustomButton key={id}
+                                             backgroundColor={box === id ? theme.colors.red.step0 : '#1F1F1F'}
                                              onClick={() => setBox(id)}>
                             Бокс {index + 1}
                         </Styled.CustomButton>)
