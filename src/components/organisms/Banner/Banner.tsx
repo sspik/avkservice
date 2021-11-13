@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { Button, TextField } from '@mui/material'
 import { Text } from '@components'
 import { Styled } from './styled'
@@ -13,13 +13,18 @@ type TBannerProps = {
 }
 
 export const Banner: FC<TBannerProps> = ({ title, description, formTitle, buttonText }) => {
+    const [send, setSend] = useState(false)
     const formik = useFormik({
         initialValues: {
             phone: '',
             name: '',
         },
         onSubmit: values => {
+            setSend(true)
             alert(JSON.stringify(values, null, 2))
+            setTimeout(() => {
+                setSend(false)
+            }, 5000)
         },
     })
 
@@ -39,26 +44,37 @@ export const Banner: FC<TBannerProps> = ({ title, description, formTitle, button
                     </Text>
                 </Styled.WrapperTextBlock>
                 <Styled.WrapperForm onSubmit={formik.handleSubmit} style={{ zIndex: 1 }}>
-                    <Text size={24} sizeMob={24} fontWeight={700} color='white'>
+                    {!send && <><Text size={24} sizeMob={24} fontWeight={700} color='white'>
                         {formTitle}
                     </Text>
-                    <TextField id='phone'
-                               name='phone'
-                               type='phone'
-                               placeholder='Ваш номер'
-                               onChange={formik.handleChange}
-                               value={formik.values.phone}
-                               style={{ backgroundColor: 'white', borderRadius: '8px' }} />
-                    <TextField id='name'
-                               name='name'
-                               type='text'
-                               placeholder='Ваше имя'
-                               onChange={formik.handleChange}
-                               value={formik.values.name}
-                               style={{ backgroundColor: 'white', borderRadius: '8px' }} />
-                    <Button variant='contained' type='submit' style={{ backgroundColor: 'red', padding: '16px' }}>
-                        {buttonText}
-                    </Button>
+                        <TextField id='phone'
+                                   name='phone'
+                                   type='phone'
+                                   placeholder='Ваш номер'
+                                   onChange={formik.handleChange}
+                                   value={formik.values.phone}
+                                   style={{ backgroundColor: 'white', borderRadius: '8px' }} />
+                        <TextField id='name'
+                                   name='name'
+                                   type='text'
+                                   placeholder='Ваше имя'
+                                   onChange={formik.handleChange}
+                                   value={formik.values.name}
+                                   style={{ backgroundColor: 'white', borderRadius: '8px' }} />
+                        <Button variant='contained' type='submit' style={{ backgroundColor: 'red', padding: '16px' }}>
+                            {buttonText}
+                        </Button></>}
+                    {send && <>
+                        <Text size={24} sizeMob={24} fontWeight={700} color='white'>
+                            {formik.values.name}
+                        </Text>
+                        <Text size={18} sizeMob={18} fontWeight={400} color='white'>
+                            Ожидайте звонка оператора чтобы подтверидть запись!
+                        </Text>
+                        <Text size={18} sizeMob={18} fontWeight={400} color='white'>
+                            на номер {formik.values.phone}
+                        </Text>
+                    </>}
                 </Styled.WrapperForm>
                 <Styled.RatingWrapper>
                     <img src='./yandex-logo.png' width={76} height={22} alt='logo' />
