@@ -3,7 +3,7 @@ import { theme } from '@theme'
 import { Button } from '@mui/material'
 
 type TButtonProps = {
-    backgroundColor?: string;
+    bgColor?: string;
 }
 
 const WrapperCameraView = styled.div`
@@ -46,7 +46,7 @@ const CustomButton = styled(Button)<TButtonProps>`
   padding: 6px 24px;
   border: 1px solid;
   line-height: 1.5;
-  background-color: ${({ backgroundColor }) => backgroundColor || `#1F1F1F`};
+  background-color: ${({ bgColor }) => bgColor || `#1F1F1F`};
   border-radius: 16px;
   font-family: Roboto, sans-serif;
 
