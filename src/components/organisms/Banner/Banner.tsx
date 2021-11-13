@@ -4,6 +4,16 @@ import { Text } from '@components'
 import { Styled } from './styled'
 import { Stars } from '@icons'
 import { useFormik } from 'formik'
+import * as Yup from 'yup'
+import { theme } from '@theme'
+
+const SignupSchema = Yup.object().shape({
+    phone: Yup.string()
+        .min(10, 'Введите корректный номер')
+        .required('Введите корректный номер'),
+    name: Yup.string()
+        .required('Введите корректное имя'),
+})
 
 type TBannerProps = {
     title: string
@@ -19,15 +29,15 @@ export const Banner: FC<TBannerProps> = ({ title, description, formTitle, button
             phone: '',
             name: '',
         },
+        validationSchema: SignupSchema,
         onSubmit: values => {
             setSend(true)
             alert(JSON.stringify(values, null, 2))
             setTimeout(() => {
                 setSend(false)
-            }, 5000)
+            }, 10000)
         },
     })
-
     return (
         <>
             <Styled.FormContainer>
@@ -50,10 +60,13 @@ export const Banner: FC<TBannerProps> = ({ title, description, formTitle, button
                         <TextField id='phone'
                                    name='phone'
                                    type='phone'
+                                   error={!!formik?.errors?.phone}
                                    placeholder='Ваш номер'
                                    onChange={formik.handleChange}
                                    value={formik.values.phone}
                                    style={{ backgroundColor: 'white', borderRadius: '8px' }} />
+                        {formik.errors.phone &&
+                        <Text size={12} color={theme.colors.white.step0}>{formik.errors.phone}</Text>}
                         <TextField id='name'
                                    name='name'
                                    type='text'
@@ -61,6 +74,8 @@ export const Banner: FC<TBannerProps> = ({ title, description, formTitle, button
                                    onChange={formik.handleChange}
                                    value={formik.values.name}
                                    style={{ backgroundColor: 'white', borderRadius: '8px' }} />
+                        {formik.errors.name &&
+                        <Text size={12} color={theme.colors.white.step0}>{formik.errors.name}</Text>}
                         <Button variant='contained' type='submit' style={{ backgroundColor: 'red', padding: '16px' }}>
                             {buttonText}
                         </Button></>}
@@ -69,7 +84,7 @@ export const Banner: FC<TBannerProps> = ({ title, description, formTitle, button
                             {formik.values.name}
                         </Text>
                         <Text size={18} sizeMob={18} fontWeight={400} color='white'>
-                            Ожидайте звонка оператора чтобы подтверидть запись!
+                            Ожидайте звонка оператора чтобы подтвердить запись!
                         </Text>
                         <Text size={18} sizeMob={18} fontWeight={400} color='white'>
                             на номер {formik.values.phone}

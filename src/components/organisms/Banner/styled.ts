@@ -41,6 +41,7 @@ const WrapperForm = styled.form`
   border-radius: 8px;
   background: linear-gradient(180deg, #e40000 0%, #333333 100%);
   box-shadow: 0px 20px 50px 2px rgba(0, 0, 0, 0.25);
+  min-height: 294px;
 
   @media (min-width: ${theme.breakpoint.tabletMd}px) {
     grid-column: 2/3;
