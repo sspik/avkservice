@@ -8,10 +8,10 @@ export const Navigation = (): JSX.Element => (
     <Styled.CustomGridLayout>
         <Styled.WrapperContainer>
             <Styled.DesktopWrapper>
-                <Link href='/' passHref><a><AvkLogo /></a></Link>
+                <Link href={`${process.env.BACKEND_URL}/`} passHref><a><AvkLogo /></a></Link>
             </Styled.DesktopWrapper>
             <Styled.MobileWrapper>
-                <Link href='/' passHref><a><AvkMobile /></a></Link>
+                <Link href={`${process.env.BACKEND_URL}/`} passHref><a><AvkMobile /></a></Link>
             </Styled.MobileWrapper>
             <Styled.MobileWrapper style={{ justifySelf: 'right' }}>
                 <a href='tel:+74955321922'>
@@ -30,7 +30,7 @@ export const Navigation = (): JSX.Element => (
             <Styled.MobileWrapper style={{ justifySelf: 'right' }}>
                 <Styled.WrapperIconBlock>
                     <Coordinate />
-                    <Link href='/address' passHref>
+                    <Link href={`${process.env.BACKEND_URL}/address`} passHref>
                         <Styled.CustomLink>
                             <Text size={16} fontWeight={700}>Наши адреса</Text>
                         </Styled.CustomLink>
@@ -47,7 +47,7 @@ export const Navigation = (): JSX.Element => (
             <Styled.DesktopWrapper>
                 <Styled.WrapperIconBlock>
                     <Coordinate />
-                    <Link href='/address' passHref>
+                    <Link href={`${process.env.BACKEND_URL}/address`} passHref>
                         <Styled.CustomLink>
                             <Text size={16} fontWeight={700}>Наши адреса</Text>
                         </Styled.CustomLink>
