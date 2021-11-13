@@ -2,6 +2,9 @@ import type { GetStaticPaths, NextPage } from 'next'
 import { GetStaticProps } from 'next'
 import { LayoutPage, Text } from '@components'
 import styled from 'styled-components'
+import { Arrow } from '../../src'
+import Link from 'next/link'
+import React from 'react'
 
 
 type TPageData = {
@@ -148,6 +151,7 @@ const Service: NextPage<TProps> = ({ page }) => (
 
     <LayoutPage>
         <WrapperAddress>
+            <Link href={`${process.env.BACKEND_URL}/`} passHref><a><WrapperLinkHome><Arrow />Назад</WrapperLinkHome></a></Link>
             <Text size={32} sizeMob={24} fontWeight={700}>Страница {page.seoText}</Text>
             <Text size={18} sizeMob={18} fontWeight={700}>Страница {page.meta.description}</Text>
             <div style={{ height: '96px' }} />
@@ -158,6 +162,12 @@ const Service: NextPage<TProps> = ({ page }) => (
 const WrapperAddress = styled.div`
   display: grid;
   grid-row-gap: 16px;
+
+`
+const WrapperLinkHome = styled.div`
+  display: grid;
+  grid-template-columns: 13px 1fr;
+  grid-column-gap: 16px;
 
 `
 export default Service
