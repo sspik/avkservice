@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import {Text} from '../../molecules/Text'
-import {theme} from '@theme'
+import { Text } from '../../molecules/Text'
+import { theme } from '@theme'
 
 const FormContainer = styled.div`
   padding: 24px 8px;
@@ -33,7 +33,7 @@ const DesktopWrapper = styled.div`
     display: block;
   }
 `
-const WrapperForm = styled.div`
+const WrapperForm = styled.form`
   display: grid;
   grid-row-gap: 16px;
   margin: 16px -24px;
