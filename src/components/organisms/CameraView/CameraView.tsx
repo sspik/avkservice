@@ -36,7 +36,7 @@ export const CameraView: FC<TCameraViewProps> = ({ links }) => {
             <Styled.AddressWrapper>
                 {
                     uniqueBox?.map((item, index) => <Styled.CustomButton key={index}
-                                                                         bgColor={item === addressBoxes ? theme.colors.red.step0 : '#1F1F1F'}
+                                                                         bgcolor={item === addressBoxes ? theme.colors.red.step0 : '#1F1F1F'}
                                                                          onClick={() => handleBoxAddress(item)}>
                         {item}
                     </Styled.CustomButton>)
@@ -47,7 +47,7 @@ export const CameraView: FC<TCameraViewProps> = ({ links }) => {
                 {
                     links?.filter(({ boxAddress }) => boxAddress === addressBoxes).map(({ id }, index) =>
                         <Styled.CustomButton key={id}
-                                             bgColor={box === id ? theme.colors.red.step0 : '#1F1F1F'}
+                                             bgcolor={box === id ? theme.colors.red.step0 : '#1F1F1F'}
                                              onClick={() => setBox(id)}>
                             Бокс {index + 1}
                         </Styled.CustomButton>)

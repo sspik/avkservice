@@ -18,9 +18,9 @@ type TFooterProps = {
     }[]
 }
 export const Footer: FC<TFooterProps> = ({ items }): JSX.Element => {
-    const blocks = items?.map(({ link, title }) => {
+    const blocks = items?.map(({ link, title, id }) => {
         return link && title &&
-            <Link href={link} passHref><a>{title[0].toUpperCase() + title.toLowerCase().slice(1)}</a></Link>
+            <Link key={id} href={link} passHref><a>{title[0].toUpperCase() + title.toLowerCase().slice(1)}</a></Link>
     })
 
     return (

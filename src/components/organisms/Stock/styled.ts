@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import {theme} from "@theme";
-import {Button} from "@mui/material";
+import { theme } from '@theme'
+import { Button } from '@mui/material'
 
 const WrapperStock = styled.div`
   display: grid;
@@ -13,6 +13,9 @@ const WrapperStock = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
   }
 `
+const WrapperSpacing = styled.div`
+  margin-bottom: 24px;
+`
 const CustomButton = styled(Button)({
     boxShadow: 'none',
     textTransform: 'none',
@@ -23,7 +26,6 @@ const CustomButton = styled(Button)({
     lineHeight: 1.5,
     backgroundColor: '#1F1F1F',
     borderRadius: '16px',
-    marginBottom: '24px',
     fontFamily: [
         'Roboto',
     ].join(','),
@@ -40,10 +42,11 @@ const CustomButton = styled(Button)({
     '&:focus': {
         boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
     },
-});
+})
 
 
 export const Styled = {
     WrapperStock,
-    CustomButton
+    WrapperSpacing,
+    CustomButton,
 }
