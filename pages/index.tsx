@@ -60,38 +60,38 @@ const Home: NextPage = () => {
         {
             id: 1,
             title: 'string',
-            link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=131072&width=&height=&lang=ru',
-            boxAddress: 'ул.43-й армии, 16',
+            link: 'https://open.ivideon.com/embed/v2/?server=100-5RdSLExDJR0Obng0nX643C&camera=196608&width=&height=&lang=ru',
+            boxAddress: 'ул.Ульяновых, 12',
         },
         {
             id: 2,
+            title: 'string',
+            link: 'https://open.ivideon.com/embed/v2/?server=100-5RdSLExDJR0Obng0nX643C&camera=262144&width=&height=&lang=ru',
+            boxAddress: 'ул.Ульяновых, 12',
+        },
+        {
+            id: 3,
+            title: 'string',
+            link: 'https://open.ivideon.com/embed/v2/?server=100-5RdSLExDJR0Obng0nX643C&camera=131072&width=&height=&lang=ru',
+            boxAddress: 'ул.Ульяновых, 12',
+        },
+        {
+            id: 4,
             title: 'string',
             link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=524288&width=&height=&lang=ru',
             boxAddress: 'ул.43-й армии, 16',
         },
         {
-            id: 3,
-            title: 'string',
-            link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=655360&width=&height=&lang=ru',
-            boxAddress: 'ул.43-й армии, 16',
-        },
-        {
-            id: 4,
-            title: 'string',
-            link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=131072&width=&height=&lang=ru',
-            boxAddress: 'ул.Ульяновых, 12',
-        },
-        {
             id: 5,
             title: 'string',
             link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=131072&width=&height=&lang=ru',
-            boxAddress: 'ул.Ульяновых, 12',
+            boxAddress: 'ул.43-й армии, 16',
         },
         {
             id: 6,
             title: 'string',
-            link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=131072&width=&height=&lang=ru',
-            boxAddress: 'ул.Ульяновых, 12',
+            link: 'https://open.ivideon.com/embed/v2/?server=100-ErDn2MEmnEPRnd6IJnHT2b&camera=655360&width=&height=&lang=ru',
+            boxAddress: 'ул.43-й армии, 16',
         },
     ]
     return (
