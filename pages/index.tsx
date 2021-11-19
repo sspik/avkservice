@@ -104,8 +104,9 @@ const Home: NextPage = () => {
                     buttonText='Отправить'
                 />
                 <Stock description='СКИДКА ПРИ ЗАМЕНЕ МАСЛА' imgLink='./track.png' percent='10%' alt='Все акции' />
-                <Cards cards={cards} />
                 <CameraView links={links} />
+                <Cards cards={cards} />
+
                 <div style={{ height: '96px' }} />
             </div>
         </LayoutPage>

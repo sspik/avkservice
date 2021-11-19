@@ -10,6 +10,7 @@ const WrapperCameraView = styled.div`
   display: grid;
   grid-column-gap: 24px;
   grid-row-gap: 24px;
+  margin-bottom: 48px;
 
   @media (min-width: ${theme.breakpoint.mobileLg}px) {
 
