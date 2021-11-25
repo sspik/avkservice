@@ -12,13 +12,10 @@ const WrapperCameraView = styled.div`
   grid-row-gap: 24px;
   margin-bottom: 48px;
 
-  @media (min-width: ${theme.breakpoint.mobileLg}px) {
-
-  }
-
   @media (min-width: ${theme.breakpoint.tabletMd}px) {
-
+    grid-template-columns: 1fr 1fr;
   }
+  
 `
 const AddressWrapper = styled.div`
   display: grid;
@@ -26,6 +23,7 @@ const AddressWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
 
   @media (min-width: ${theme.breakpoint.tabletMd}px) {
+    grid-column-end: 2 span;
     grid-template-columns: repeat(4, 1fr);
   }
 `
@@ -35,7 +33,8 @@ const BoxWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
 
   @media (min-width: ${theme.breakpoint.tabletMd}px) {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 24px;
   }
 `
 

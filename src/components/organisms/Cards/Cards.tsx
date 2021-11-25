@@ -36,7 +36,7 @@ export const Cards: FC<TStockProps> = ({ cards }) => {
                 <Styled.WrapperCard href={link} key={id} cardColor={cardColor} columnWidthDesktop={columnWidthDesktop}
                                     columnWidthTablet={columnWidthTablet}>
                     <Text color={textColor} size={24} fontWeight={700}>{title}</Text>
-                    <img src={imageLink} width={96} height={96} alt={alt} />
+                    <img src={imageLink} width={96} alt={alt} />
                 </Styled.WrapperCard>
 
             ))}

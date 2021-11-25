@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         {
             id: 3,
             title: 'РЕМОНТ КПП',
-            imageLink: './heart.png',
+            imageLink: './kpp.png',
             cardColor: theme.colors.gray.step1,
             textColor: theme.colors.white.step0,
             columnWidthDesktop: 2,
