@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { Banner, CameraView, Cards, LayoutPage, Stock } from '@components'
 import { theme } from '../src'
+import Head from 'next/head'
 
 const Home: NextPage = () => {
     const cards = [
@@ -95,21 +96,32 @@ const Home: NextPage = () => {
         },
     ]
     return (
-        <LayoutPage>
-            <div>
-                <Banner
-                    title='РЕМОНТ И ОБСЛУЖИВАНИЕ'
-                    description='гарантия 2 года на все услуги'
-                    formTitle='ЗАПИСЬ В СЕРВИС'
-                    buttonText='Отправить'
-                />
-                <Stock description='СКИДКА ПРИ ЗАМЕНЕ МАСЛА' imgLink='./track.png' percent='10%' alt='Все акции' />
-                <CameraView links={links} />
-                <Cards cards={cards} />
+        <>
+            <Head>
+                <title>AVK service - автосервисы в Подольске</title>
+                <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+                <link rel='stylesheet' href='https://cdn.envybox.io/widget/cbk.css' />
+                <script type='text/javascript'
+                        src='https://cdn.envybox.io/widget/cbk.js?wcb_code=730acf1799c871b0c2610a6ea3716681'
+                        charSet='UTF-8' async />
+            </Head>
+            <LayoutPage>
+                <div>
+                    <Banner
+                        title='РЕМОНТ И ОБСЛУЖИВАНИЕ'
+                        description='гарантия 2 года на все услуги'
+                        formTitle='ЗАПИСЬ В СЕРВИС'
+                        buttonText='Отправить'
+                    />
+                    <Stock description='СКИДКА ПРИ ЗАМЕНЕ МАСЛА' imgLink='./track.png' percent='10%' alt='Все акции' />
+                    <CameraView links={links} />
+                    <Cards cards={cards} />
 
-                <div style={{ height: '96px' }} />
-            </div>
-        </LayoutPage>
+                    <div style={{ height: '96px' }} />
+                </div>
+            </LayoutPage>
+        </>
+
     )
 }
 

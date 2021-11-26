@@ -6,6 +6,7 @@ import { Stars } from '@icons'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { theme } from '@theme'
+import axios from 'axios'
 
 const SignupSchema = Yup.object().shape({
     phone: Yup.string()
@@ -33,6 +34,7 @@ export const Banner: FC<TBannerProps> = ({ title, description, formTitle, button
         onSubmit: values => {
             setSend(true)
             alert(JSON.stringify(values, null, 2))
+            axios.post('/api/check', { name: `${formik.values.name} ${formik.values.phone}` })
             setTimeout(() => {
                 setSend(false)
             }, 10000)
