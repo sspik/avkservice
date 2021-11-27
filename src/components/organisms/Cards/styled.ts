@@ -25,7 +25,9 @@ const WrapperCard = styled.a<IProps>`
   display: grid;
   padding: 16px;
   border-radius: 12px;
+  grid-template-rows: min-content 100px; ;
   background: ${({ cardColor }) => cardColor || theme.colors.red.step0};
+  overflow: hidden;
   text-decoration: none;
   color: black;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);

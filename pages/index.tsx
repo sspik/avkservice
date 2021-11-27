@@ -8,7 +8,7 @@ const Home: NextPage = () => {
         {
             id: 1,
             title: 'КОМПЬЮТЕРНАЯ ДИАГНОСТИКА',
-            imageLink: './heart.png',
+            imageLink: './computer.png',
             cardColor: theme.colors.red.step0,
             columnWidthDesktop: 3,
             columnWidthTablet: 3,
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         {
             id: 2,
             title: 'РЕМОНТ ХОДОВОЙ ЧАСТИ',
-            imageLink: './heart.png',
+            imageLink: './chassis.png',
             cardColor: theme.colors.gray.step2,
             columnWidthDesktop: 3,
             link: `${process.env.BACKEND_URL}/service/2`,
@@ -48,7 +48,7 @@ const Home: NextPage = () => {
         {
             id: 5,
             title: 'ЗАМЕНА ТЕХ.ЖИДКОСТЕЙ',
-            imageLink: './heart.png',
+            imageLink: './shell-oil.png',
             cardColor: theme.colors.red.step0,
             textColor: theme.colors.white.step0,
             columnWidthDesktop: 2,
