@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { Button, TextField } from '@mui/material'
+import { Button, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material'
 import { Text } from '@components'
 import { Styled } from './styled'
 import { Stars } from '@icons'
@@ -25,10 +25,12 @@ type TBannerProps = {
 
 export const Banner: FC<TBannerProps> = ({ title, description, formTitle, buttonText }) => {
     const [send, setSend] = useState(false)
+    const [street, setStreet] = useState('ульяновых')
     const formik = useFormik({
         initialValues: {
             phone: '',
             name: '',
+            street: 'ульяновых',
         },
         validationSchema: SignupSchema,
         onSubmit: values => {
@@ -40,6 +42,7 @@ export const Banner: FC<TBannerProps> = ({ title, description, formTitle, button
             }, 10000)
         },
     })
+
     return (
         <>
             <Styled.FormContainer>
@@ -59,66 +62,78 @@ export const Banner: FC<TBannerProps> = ({ title, description, formTitle, button
                     {!send && <><Text size={24} sizeMob={24} fontWeight={700} color='white'>
                         {formTitle}
                     </Text>
-                        <TextField id='phone'
-                                   name='phone'
-                                   type='phone'
-                                   error={!!formik?.errors?.phone}
-                                   placeholder='Ваш номер'
-                                   onChange={formik.handleChange}
-                                   value={formik.values.phone}
-                                   style={{ backgroundColor: 'white', borderRadius: '8px' }} />
+                    <ToggleButtonGroup
+                        value={street}
+                        style={{ width: 'fit-content', background: '#ffffff' }}
+                        exclusive
+                    >
+                        <ToggleButton value='ульяновых' onClick={() => {
+                            setStreet('ульяновых')
+                        }}>ул.Ульяновых, 12</ToggleButton>
+                            <ToggleButton value='43армии' onClick={() =>{
+                            setStreet('43армии')
+                        }}>ул.43-й армии, 16</ToggleButton>
+                            </ToggleButtonGroup>
+                            <TextField id='phone'
+                                name='phone'
+                                type='phone'
+                                error={!!formik?.errors?.phone}
+                                placeholder='Ваш номер'
+                                onChange={formik.handleChange}
+                                value={formik.values.phone}
+                                style={{backgroundColor: 'white', borderRadius: '8px'}} />
                         {formik.errors.phone &&
-                        <Text size={12} color={theme.colors.white.step0}>{formik.errors.phone}</Text>}
-                        <TextField id='name'
-                                   name='name'
-                                   type='text'
-                                   placeholder='Ваше имя'
-                                   onChange={formik.handleChange}
-                                   value={formik.values.name}
-                                   style={{ backgroundColor: 'white', borderRadius: '8px' }} />
+                            <Text size={12} color={theme.colors.white.step0}>{formik.errors.phone}</Text>}
+                            <TextField id='name'
+                                name='name'
+                                type='text'
+                                placeholder='Ваше имя'
+                                onChange={formik.handleChange}
+                                value={formik.values.name}
+                                style={{backgroundColor: 'white', borderRadius: '8px'}} />
                         {formik.errors.name &&
-                        <Text size={12} color={theme.colors.white.step0}>{formik.errors.name}</Text>}
-                        <Button variant='contained' type='submit' style={{ backgroundColor: 'red', padding: '16px' }}>
-                            {buttonText}
-                        </Button></>}
-                    {send && <>
-                        <Text size={24} sizeMob={24} fontWeight={700} color='white'>
-                            {formik.values.name}
-                        </Text>
-                        <Text size={18} sizeMob={18} fontWeight={400} color='white'>
-                            Ожидайте звонка оператора чтобы подтвердить запись!
-                        </Text>
-                        <Text size={18} sizeMob={18} fontWeight={400} color='white'>
-                            на номер {formik.values.phone}
-                        </Text>
-                    </>}
-                </Styled.WrapperForm>
-                <Styled.RatingWrapper>
-                    <img src='./yandex-logo.png' width={76} height={22} alt='logo' />
-                    <Stars />
-                    <Styled.ReviewsWrapper>
-                        <Styled.CustomLink
-                            href='https://yandex.ru/maps/org/avtoservis_avkautoservice/100427277081/?ll=37.490570%2C55.421889&mode=search&sctx=ZAAAAAgBEAAaKAoSCXZQiesYxUJAERVHs%2BwosktAEhIJyO4BAOAt7z8RqpWIPr%2Fi0z8iBQABAgQFKAowADimiK%2BT%2FuuOg%2BABQPtTSAFVzczMPlgAYiJleHBfaWQ9Y29udHJvbF93b3JzZV9tZXRyaWNfMV9tYXBzagJydXAAnQHNzEw9oAEAqAEA&sll=37.490570%2C55.421889&sspn=0.130485%2C0.058824&text=%D0%9F%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%2C%20%D0%B0%D0%B2%D1%82%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81&z=13'>
-                            <Text size={16} fontWeight={700} style={{ justifyItems: 'center' }}>
-                                Отзывы
-                            </Text>
-                        </Styled.CustomLink>
-                    </Styled.ReviewsWrapper>
-                </Styled.RatingWrapper>
-                <Styled.DesktopWrapper>
-                    <Styled.PartnerWrapper>
+                            <Text size={12} color={theme.colors.white.step0}>{formik.errors.name}</Text>}
+                            <Button variant='contained' type='submit' style={{backgroundColor: 'red', padding: '16px'}}>
+                        {buttonText}
+                            </Button></>}
+                            {send && <>
+                                <Text size={24} sizeMob={24} fontWeight={700} color='white'>
+                                    {formik.values.name}
+                                </Text>
+                                <Text size={18} sizeMob={18} fontWeight={400} color='white'>
+                                    Ожидайте звонка оператора чтобы подтвердить запись!
+                                </Text>
+                                <Text size={18} sizeMob={18} fontWeight={400} color='white'>
+                                    на номер {formik.values.phone}
+                                </Text>
+                            </>}
+                    </Styled.WrapperForm>
+                    <Styled.RatingWrapper>
+                        <img src='./yandex-logo.png' width={76} height={22} alt='logo' />
+                        <Stars />
+                        <Styled.ReviewsWrapper>
+                            <Styled.CustomLink
+                                href='https://yandex.ru/maps/org/avtoservis_avkautoservice/100427277081/?ll=37.490570%2C55.421889&mode=search&sctx=ZAAAAAgBEAAaKAoSCXZQiesYxUJAERVHs%2BwosktAEhIJyO4BAOAt7z8RqpWIPr%2Fi0z8iBQABAgQFKAowADimiK%2BT%2FuuOg%2BABQPtTSAFVzczMPlgAYiJleHBfaWQ9Y29udHJvbF93b3JzZV9tZXRyaWNfMV9tYXBzagJydXAAnQHNzEw9oAEAqAEA&sll=37.490570%2C55.421889&sspn=0.130485%2C0.058824&text=%D0%9F%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%2C%20%D0%B0%D0%B2%D1%82%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81&z=13'>
+                                <Text size={16} fontWeight={700} style={{ justifyItems: 'center' }}>
+                                    Отзывы
+                                </Text>
+                            </Styled.CustomLink>
+                        </Styled.ReviewsWrapper>
+                    </Styled.RatingWrapper>
+                    <Styled.DesktopWrapper>
+                        <Styled.PartnerWrapper>
+                            <img src='./shell.png' width={92} height={24} alt='logo' />
+                            <Text size={16} fontWeight={700}>официальный партнер</Text>
+                        </Styled.PartnerWrapper>
+                    </Styled.DesktopWrapper>
+                    </Styled.FormContainer>
+                        <Styled.MobileWrapper style={{marginBottom: '24px'}}>
+                        <Styled.PartnerWrapper>
                         <img src='./shell.png' width={92} height={24} alt='logo' />
-                        <Text size={16} fontWeight={700}>официальный партнер</Text>
-                    </Styled.PartnerWrapper>
-                </Styled.DesktopWrapper>
-            </Styled.FormContainer>
-            <Styled.MobileWrapper style={{ marginBottom: '24px' }}>
-                <Styled.PartnerWrapper>
-                    <img src='./shell.png' width={92} height={24} alt='logo' />
-                    <Text size={16} fontWeight={700} style={{ justifySelf: 'end' }}>официальный партнер</Text>
-                </Styled.PartnerWrapper>
-            </Styled.MobileWrapper>
+                        <Text size={16} fontWeight={700} style={{justifySelf: 'end'}}>официальный партнер</Text>
+                        </Styled.PartnerWrapper>
+                        </Styled.MobileWrapper>
 
-        </>
-    )
-}
+                        </>
+                        )
+                    }
