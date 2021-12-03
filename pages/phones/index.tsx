@@ -1,55 +1,94 @@
 import type { NextPage } from 'next'
 import { LayoutPage } from '@components'
-import { theme } from '../../src'
 import styled from 'styled-components'
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
-import React from 'react'
+import { DataGrid, GridColDef, GridApi, GridCellValue } from '@mui/x-data-grid'
+import React, { useState } from 'react'
+import { Button } from '@mui/material'
 
 
 const Phones: NextPage = () => {
+
+
+    const rows = [
+        {
+            id: 1,
+            lastName: 'Александр',
+            phoneNumber: '+790000000',
+            age: 'Нет',
+        },
+        { id: 2, lastName: 'Николай', phoneNumber: '+790000001', age: 'Нет' },
+        { id: 3, lastName: 'Петр', phoneNumber: '+790000002', age: 'Нет' },
+        { id: 4, lastName: 'Сергей', phoneNumber: '+790000003', age: 'Нет' },
+        { id: 5, lastName: 'Иннокентий', phoneNumber: '+790000004', age: 'Нет' },
+        { id: 6, lastName: 'Петр', phoneNumber: '+790000005', age: 'Нет' },
+        { id: 7, lastName: 'Иван', phoneNumber: '+790000006', age: 'Нет' },
+        { id: 8, lastName: 'Серафим', phoneNumber: '+790000007', age: 'Нет' },
+        { id: 9, lastName: 'Ашот', phoneNumber: '+790000008', age: 'Нет' },
+        { id: 10, lastName: 'Артем', phoneNumber: '+790000009', age: 'Нет' },
+        { id: 11, lastName: 'Александр', phoneNumber: '+790000010', age: 'Нет' },
+        { id: 12, lastName: 'Александр', phoneNumber: '+790000011', age: 'Нет' },
+        { id: 13, lastName: 'Александр', phoneNumber: '+790000012', age: 'Нет' },
+        { id: 14, lastName: 'Александр', phoneNumber: '+790000013', age: 'Нет' },
+        { id: 15, lastName: 'Александр', phoneNumber: '+790000014', age: 'Нет' },
+        { id: 16, lastName: 'Александр', phoneNumber: '+790000015', age: 'Нет' },
+        { id: 17, lastName: 'Александр', phoneNumber: '+790000016', age: 'Нет' },
+        { id: 18, lastName: 'Александр', phoneNumber: '+790000017', age: 'Нет' },
+        { id: 19, lastName: 'Александр', phoneNumber: '+790000018', age: 'Нет' },
+        { id: 20, lastName: 'Александр', phoneNumber: '+790000019', age: 'Нет' },
+        { id: 21, lastName: 'Александр', phoneNumber: '+790000020', age: 'Нет' },
+    ]
+
+    const [data, setData] = useState<any>(rows)
 
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID', width: 70 },
         { field: 'lastName', headerName: 'Имя', width: 130 },
         { field: 'phoneNumber', headerName: 'Номер телефона', width: 130 },
         { field: 'age', headerName: 'Статус', width: 130 },
-    ]
+        {
+            field: 'action',
+            headerName: 'Перезвонили',
+            sortable: false,
+            width: 150,
+            renderCell: (params) => {
+                const onClick = (e: { stopPropagation: () => void }) => {
+                    e?.stopPropagation() // don't select this row after clicking
 
-    const rows = [
-        { id: 1, lastName: 'Александр', phoneNumber: '+790000000', age: <div style={{color: `${theme.colors.red.step0}`}}>FUCK</div> },
-        { id: 2, lastName: 'Александр', phoneNumber: '+790000001', age: 42 },
-        { id: 3, lastName: 'Александр', phoneNumber: '+790000002', age: 45 },
-        { id: 4, lastName: 'Александр', phoneNumber: '+790000003', age: 16 },
-        { id: 5, lastName: 'Александр', phoneNumber: '+790000004', age: null },
-        { id: 6, lastName: 'Александр', phoneNumber: '+790000005', age: 150 },
-        { id: 7, lastName: 'Александр', phoneNumber: '+790000006', age: 44 },
-        { id: 8, lastName: 'Александр', phoneNumber: '+790000007', age: 36 },
-        { id: 9, lastName: 'Александр', phoneNumber: '+790000008', age: 65 },
-        { id: 10, lastName: 'Александр', phoneNumber: '+790000009', age: 16 },
-        { id: 11, lastName: 'Александр', phoneNumber: '+790000010', age: null },
-        { id: 12, lastName: 'Александр', phoneNumber: '+790000011', age: 150 },
-        { id: 13, lastName: 'Александр', phoneNumber: '+790000012', age: 44 },
-        { id: 14, lastName: 'Александр', phoneNumber: '+790000013', age: 36 },
-        { id: 15, lastName: 'Александр', phoneNumber: '+790000014', age: 65 },
-        { id: 16, lastName: 'Александр', phoneNumber: '+790000015', age: 16 },
-        { id: 17, lastName: 'Александр', phoneNumber: '+790000016', age: null },
-        { id: 18, lastName: 'Александр', phoneNumber: '+790000017', age: 150 },
-        { id: 19, lastName: 'Александр', phoneNumber: '+790000018', age: 44 },
-        { id: 20, lastName: 'Александр', phoneNumber: '+790000019', age: 36 },
-        { id: 21, lastName: 'Александр', phoneNumber: '+790000020', age: 65 },
+                    const api: GridApi = params.api
+                    const thisRow: Record<string, GridCellValue> = {}
+
+                    api
+                        .getAllColumns()
+                        .filter((c) => c.field !== '__check__' && !!c)
+                        .forEach(
+                            (c) => (thisRow[c.field] = params.getValue(params.id, c.field)),
+                        )
+
+
+                    const updateData = data?.map((item: { id: string | number | boolean | object | Date | null | undefined }) => {
+                        return item?.id === thisRow?.id ? { ...item, age: 'Да' } : item
+                    })
+
+                    return setData(updateData)
+                }
+
+                return <Button variant='contained' onClick={onClick}>Перезвонили</Button>
+            },
+        },
+
     ]
 
     return <LayoutPage>
         <WrapperAddress>
             <div>
                 <DataGrid
-                    rows={rows}
+                    rows={data}
                     columns={columns}
                     pageSize={15}
                     rowsPerPageOptions={[1]}
-                    checkboxSelection
-                    onCellClick={(e)=> console.log(e.id)}
-                    logLevel="error"
+                    onCellClick={(e) => console.log(e.id)}
+                    logLevel='error'
+
 
                 />
             </div>
@@ -61,12 +100,6 @@ const WrapperAddress = styled.div`
   display: grid;
   height: 960px;
   margin-bottom: 96px;
-
-`
-const WrapperLinkHome = styled.div`
-  display: grid;
-  grid-template-columns: 13px 1fr;
-  grid-column-gap: 16px;
 
 `
 export default Phones
