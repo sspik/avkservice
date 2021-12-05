@@ -9,6 +9,7 @@ import { Button } from '@mui/material'
 const Phones: NextPage = () => {
 
     const date = new Date(2021, 1, 28).toLocaleDateString()
+    const dateNow = new Date().toLocaleDateString()
 
     const rows = [
         {
@@ -16,28 +17,29 @@ const Phones: NextPage = () => {
             lastName: 'Александр',
             phoneNumber: '+790000000',
             age: 'Нет',
-            date
+            date,
+            dateNow: '-'
         },
-        { id: 2, lastName: 'Николай', phoneNumber: '+790000001', age: 'Нет', date },
-        { id: 3, lastName: 'Петр', phoneNumber: '+790000002', age: 'Нет',date },
-        { id: 4, lastName: 'Сергей', phoneNumber: '+790000003', age: 'Нет',date },
-        { id: 5, lastName: 'Иннокентий', phoneNumber: '+790000004', age: 'Нет',date },
-        { id: 6, lastName: 'Петр', phoneNumber: '+790000005', age: 'Нет',date },
-        { id: 7, lastName: 'Иван', phoneNumber: '+790000006', age: 'Нет',date },
-        { id: 8, lastName: 'Серафим', phoneNumber: '+790000007', age: 'Нет',date },
-        { id: 9, lastName: 'Ашот', phoneNumber: '+790000008', age: 'Нет',date },
-        { id: 10, lastName: 'Артем', phoneNumber: '+790000009', age: 'Нет',date },
-        { id: 11, lastName: 'Александр', phoneNumber: '+790000010', age: 'Нет',date },
-        { id: 12, lastName: 'Александр', phoneNumber: '+790000011', age: 'Нет',date },
-        { id: 13, lastName: 'Александр', phoneNumber: '+790000012', age: 'Нет',date },
-        { id: 14, lastName: 'Александр', phoneNumber: '+790000013', age: 'Нет',date },
-        { id: 15, lastName: 'Александр', phoneNumber: '+790000014', age: 'Нет',date },
-        { id: 16, lastName: 'Александр', phoneNumber: '+790000015', age: 'Нет',date },
-        { id: 17, lastName: 'Александр', phoneNumber: '+790000016', age: 'Нет',date },
-        { id: 18, lastName: 'Александр', phoneNumber: '+790000017', age: 'Нет',date },
-        { id: 19, lastName: 'Александр', phoneNumber: '+790000018', age: 'Нет',date },
-        { id: 20, lastName: 'Александр', phoneNumber: '+790000019', age: 'Нет',date },
-        { id: 21, lastName: 'Александр', phoneNumber: '+790000020', age: 'Нет',date },
+        { id: 2, lastName: 'Николай', phoneNumber: '+790000001', age: 'Нет', date, dateNow: '-' },
+        { id: 3, lastName: 'Петр', phoneNumber: '+790000002', age: 'Нет', date, dateNow: '-' },
+        { id: 4, lastName: 'Сергей', phoneNumber: '+790000003', age: 'Нет', date, dateNow: '-' },
+        { id: 5, lastName: 'Иннокентий', phoneNumber: '+790000004', age: 'Нет', date, dateNow: '-' },
+        { id: 6, lastName: 'Петр', phoneNumber: '+790000005', age: 'Нет', date, dateNow: '-' },
+        { id: 7, lastName: 'Иван', phoneNumber: '+790000006', age: 'Нет', date, dateNow: '-' },
+        { id: 8, lastName: 'Серафим', phoneNumber: '+790000007', age: 'Нет', date, dateNow: '-' },
+        { id: 9, lastName: 'Ашот', phoneNumber: '+790000008', age: 'Нет', date, dateNow: '-' },
+        { id: 10, lastName: 'Артем', phoneNumber: '+790000009', age: 'Нет', date, dateNow: '-' },
+        { id: 11, lastName: 'Александр', phoneNumber: '+790000010', age: 'Нет', date, dateNow: '-' },
+        { id: 12, lastName: 'Александр', phoneNumber: '+790000011', age: 'Нет', date, dateNow: '-' },
+        { id: 13, lastName: 'Александр', phoneNumber: '+790000012', age: 'Нет', date, dateNow: '-' },
+        { id: 14, lastName: 'Александр', phoneNumber: '+790000013', age: 'Нет', date, dateNow: '-' },
+        { id: 15, lastName: 'Александр', phoneNumber: '+790000014', age: 'Нет', date, dateNow: '-' },
+        { id: 16, lastName: 'Александр', phoneNumber: '+790000015', age: 'Нет', date, dateNow: '-' },
+        { id: 17, lastName: 'Александр', phoneNumber: '+790000016', age: 'Нет', date, dateNow: '-' },
+        { id: 18, lastName: 'Александр', phoneNumber: '+790000017', age: 'Нет', date, dateNow: '-' },
+        { id: 19, lastName: 'Александр', phoneNumber: '+790000018', age: 'Нет', date, dateNow: '-' },
+        { id: 20, lastName: 'Александр', phoneNumber: '+790000019', age: 'Нет', date, dateNow: '-' },
+        { id: 21, lastName: 'Александр', phoneNumber: '+790000020', age: 'Нет', date, dateNow: '-' },
     ]
 
     const [data, setData] = useState<any>(rows)
@@ -68,7 +70,7 @@ const Phones: NextPage = () => {
 
 
                     const updateData = data?.map((item: { id: string | number | boolean | object | Date | null | undefined }) => {
-                        return item?.id === thisRow?.id ? { ...item, age: 'Да' } : item
+                        return item?.id === thisRow?.id ? { ...item, age: 'Да', dateNow  } : item
                     })
 
                     return setData(updateData)
@@ -77,7 +79,8 @@ const Phones: NextPage = () => {
                 return <Button variant='contained' onClick={onClick}>Перезвонили</Button>
             },
         },
-        { field: 'date', headerName: 'Дата', width: 120 },
+        { field: 'date', headerName: 'Дата поступления заявки', width: 120 },
+        { field: 'dateNow', headerName: 'Дата ответа на заявку', width: 120 },
 
     ]
 
