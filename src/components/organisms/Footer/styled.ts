@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-row-gap: 24px;
   color: #ffffff;
+  height: max-content;
 
   @media (min-width: ${theme.breakpoint.desktopSm}px) {
     grid-template-columns: 1fr 1fr 1fr;
@@ -23,6 +24,7 @@ const WrapperLink = styled.div`
   display: grid;
   grid-row-gap: 12px;
   grid-column-gap: 24px;
+  height: max-content;
 
   @media (min-width: ${theme.breakpoint.desktopSm}px) {
     grid-template-columns: 1fr 1fr;
