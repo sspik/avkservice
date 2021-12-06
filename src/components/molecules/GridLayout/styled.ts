@@ -5,7 +5,7 @@ const WrapperLayout = styled.div`
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 16px 1fr 16px;
-  height: auto;
+  height: max-content;
   width: 100%;
 
   @media (min-width: ${theme.breakpoint.mobileMd}px) {
