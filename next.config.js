@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-    assetPrefix: '/avkservice/',
+    assetPrefix: '/',
     env: {
-        BACKEND_URL: '/avkservice',
+        BACKEND_URL: '/',
     },
 }

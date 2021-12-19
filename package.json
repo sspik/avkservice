@@ -7,7 +7,7 @@
     "nodeDev": "nodemon server.js",
     "build": "next build",
     "export": "next export",
-    "start": "next start",
+    "start": "next start -p 8000",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
