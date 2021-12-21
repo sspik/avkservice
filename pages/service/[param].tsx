@@ -31,7 +31,7 @@ const one: TPageData = {
     seoText:
         '1',
     meta: {
-        url: '#',
+        url: '1',
         title:
             'title',
         description:
@@ -49,7 +49,7 @@ const two: TPageData = {
     seoText:
         '2',
     meta: {
-        url: '#',
+        url: '2',
         title:
             'title',
         description:
@@ -67,7 +67,7 @@ const three: TPageData = {
     seoText:
         '3',
     meta: {
-        url: '#',
+        url: '3',
         title:
             'title',
         description:
@@ -85,7 +85,7 @@ const four: TPageData = {
     seoText:
         '4',
     meta: {
-        url: '#',
+        url: '4',
         title:
             'title',
         description:
@@ -103,7 +103,7 @@ const five: TPageData = {
     seoText:
         '5',
     meta: {
-        url: '#',
+        url: '5',
         title:
             'title',
         description:
@@ -140,7 +140,7 @@ export const getStaticProps: GetStaticProps<TProps, TParams> = async ctx => {
 
     return {
         props: {
-            page: pages[params ? params.param : 'UNI'] /* выбранное по ключу значение */,
+            page: pages[params ? params.param : '1'] /* выбранное по ключу значение */,
             gtmConfig: '',
         },
     }

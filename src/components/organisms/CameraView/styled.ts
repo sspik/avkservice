@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { theme } from '@theme'
-import { Button } from '@mui/material'
 
 type TButtonProps = {
     bgcolor?: string;
@@ -15,7 +14,7 @@ const WrapperCameraView = styled.div`
   @media (min-width: ${theme.breakpoint.tabletMd}px) {
     grid-template-columns: 1fr 1fr;
   }
-  
+
 `
 const AddressWrapper = styled.div`
   display: grid;
@@ -38,7 +37,7 @@ const BoxWrapper = styled.div`
   }
 `
 
-const CustomButton = styled(Button)<TButtonProps>`
+const CustomButton = styled.button<TButtonProps>`
   box-Shadow: none;
   text-transform: none;
   color: #ffffff;
@@ -67,7 +66,6 @@ const CustomButton = styled(Button)<TButtonProps>`
     border-Color: ${theme.colors.white.step0};
     box-Shadow: 0 0 0 0.2rem rgba(0, 123, 255, .5);
   }
-
 ,
 
 `

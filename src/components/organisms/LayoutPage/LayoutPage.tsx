@@ -12,7 +12,7 @@ const items = [
         columnWidthDesktop: 3,
         columnWidthTablet: 3,
         textColor: theme.colors.white.step0,
-        link: `${process.env.BACKEND_URL}/service/1`,
+        link: `/service/1/`,
         alt: 'awdawdawdaw',
     },
     {
@@ -21,7 +21,7 @@ const items = [
         imageLink: './heart.png',
         cardColor: theme.colors.gray.step2,
         columnWidthDesktop: 3,
-        link: `${process.env.BACKEND_URL}/service/2`,
+        link: `/service/2/`,
         alt: 'awdawdawdaw',
 
     },
@@ -32,7 +32,7 @@ const items = [
         cardColor: theme.colors.gray.step1,
         textColor: theme.colors.white.step0,
         columnWidthDesktop: 2,
-        link: `${process.env.BACKEND_URL}/service/3`,
+        link: `/service/3/`,
         alt: 'awdawdawdaw',
     },
     {
@@ -41,7 +41,7 @@ const items = [
         imageLink: './heart.png',
         cardColor: theme.colors.gray.step2,
         columnWidthDesktop: 2,
-        link: `${process.env.BACKEND_URL}/service/4`,
+        link: `/service/4/`,
         alt: 'awdawdawdaw',
     },
     {
@@ -51,7 +51,7 @@ const items = [
         cardColor: theme.colors.red.step0,
         textColor: theme.colors.white.step0,
         columnWidthDesktop: 2,
-        link: `${process.env.BACKEND_URL}/service/5`,
+        link: `/service/5/`,
         alt: 'awdawdawdaw',
     },
 ]

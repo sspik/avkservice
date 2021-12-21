@@ -67,3 +67,4 @@ export const CameraView: FC<TCameraViewProps> = ({ links }) => {
 
     )
 }
+
