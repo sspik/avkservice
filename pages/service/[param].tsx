@@ -151,7 +151,7 @@ const Service: NextPage<TProps> = ({ page }) => (
 
     <LayoutPage>
         <WrapperAddress>
-            <Link href={`${process.env.BACKEND_URL}/`} passHref><a><WrapperLinkHome><Arrow />Назад</WrapperLinkHome></a></Link>
+            <Link href={`/`} passHref><a><WrapperLinkHome><Arrow />Назад</WrapperLinkHome></a></Link>
             <Text size={32} sizeMob={24} fontWeight={700}>Страница {page.seoText}</Text>
             <Text size={18} sizeMob={18} fontWeight={700}>Страница {page.meta.description}</Text>
             <div style={{ height: '96px' }} />
