@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { Banner, CameraView, Cards, LayoutPage, Stock } from '@components'
 import { theme } from '../src'
 import Head from 'next/head'
+import { getAPI } from '../src/api/query'
 
 const Home: NextPage = () => {
     const cards = [
@@ -116,7 +117,7 @@ const Home: NextPage = () => {
                     <Stock description='СКИДКА ПРИ ЗАМЕНЕ МАСЛА' imgLink='./track.png' percent='10%' alt='Все акции' />
                     <CameraView links={links} />
                     <Cards cards={cards} />
-
+                    <button onClick={() => getAPI()} >Проверка</button>
                     <div style={{ height: '96px' }} />
                 </div>
             </LayoutPage>
