@@ -2,7 +2,7 @@ import React from 'react'
 
 import axios from 'axios'
 
-export const getAPI = () => axios.post('http://dev.avksrv.ru/auth/login', {
+export const getAPI = () => axios.post('http://dev.avksrv.ru/admin/auth/login', {
     identifier: 'innerhard@gmail.com',
     password: 'WhoFuckMe!100505',
 })
