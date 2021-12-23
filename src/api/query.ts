@@ -1,8 +1,8 @@
-import React from 'react'
+
 
 import axios from 'axios'
 
-export const getAPI = () => axios.post('/admin/auth/login', {
+export const getAPI = () => axios.post('/admin', {
     identifier: 'innerhard@gmail.com',
     password: 'WhoFuckMe!100505',
 })
