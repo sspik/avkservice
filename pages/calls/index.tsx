@@ -7,7 +7,7 @@ import { Button } from '@mui/material'
 import { getPhones, putPhones } from '../../src/api/query'
 
 
-const Phones: NextPage = () => {
+const Calls: NextPage = () => {
     const [data, setData] = useState<any>([])
     useEffect(() => {
         getPhones().then(info => {
@@ -80,4 +80,4 @@ const WrapperAddress = styled.div`
   margin-bottom: 96px;
 
 `
-export default Phones
+export default Calls
