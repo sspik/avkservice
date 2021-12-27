@@ -4,7 +4,8 @@ import { LayoutPage, Text } from '@components'
 import styled from 'styled-components'
 import { Arrow } from '../../src'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getCategories } from '../../src/api/query'
 
 
 type TPageData = {
@@ -34,23 +35,7 @@ const one: TPageData = {
         url: '1',
         title:
             'Компьютерная диагностика',
-        description: [{
-            text: 'Высокотехнологичные электронные системы современного автомобиля гарантируют стабильную работу и безопасную эксплуатацию транспортного средства. Появление ошибок в работе таких систем влечет за собой серьезные поломки дорогостоящих элементов и, как следствие, высокие затраты. \n\n',
-            linkImg: 'https://favorit-motors.ru/upload/resize_cache/fm/e97ab0b50635d386f30477d6adf81cf4.800.800.1.webp',
-        },
-            {
-                title: 'Компьютерная диагностика: цели и задачи',
-                text: 'Избежать программного сбоя или неисправности в функционировании элементов сложных механизмов помогает компьютерная диагностика автомобиля. В рамках диагностических мероприятий происходит считывание и обработка кодов ошибок, обнаруженных при анализе действия основных узлов и агрегатов.\n' +
-                    '\n' +
-                    'Диагностическое оборудование включает в себя специальные средства контроля, такие как диагностические сканеры определенной марки, многофункциональные стенды, а также переносные считыватели, известные как «ридеры». Все эти устройства подключаются к диагностическому разъему авто. Специализированная компьютерная техника позволяет не только фиксировать любые изменения в работе различных систем, но и стирать найденные коды ошибок с целью их коррекции.\n' +
-                    '\n' +
-                    'Узнать о возможных дефектах и текущих ошибках водитель может заблаговременно. Бортовые системы современного автомобиля оборудованы электронным блоком управления с функцией самодиагностики, анализирующим основные системы автомобиля и оповещающим водителя об их неисправности.  \n' +
-                    '\n' +
-                    'Автопроизводители рекомендуют регулярно проводить компьютерную диагностику авто для обеспечения безотказной работы важнейших систем машины. Только высокоточное оборудование, с помощью многочисленных электронных датчиков и чипов, способно распознать неполадку в программном обеспечении того или иного узла.  \n' +
-                    '\n',
-                linkImg: 'https://favorit-motors.ru/upload/medialibrary/836/8360fe0163a42a4264c31780965475ce.jpg',
-            },
-        ],
+        description: [],
         pageName: '1',
     },
 }
@@ -60,7 +45,7 @@ const two: TPageData = {
     meta: {
         url: '2',
         title:
-            'title',
+            'Ремонт ходовой части',
         description: [], pageName: '2',
     },
 }
@@ -70,7 +55,7 @@ const three: TPageData = {
     meta: {
         url: '3',
         title:
-            'title',
+            'Ремонт КПП',
         description: [], pageName: '3',
     },
 }
@@ -80,8 +65,8 @@ const four: TPageData = {
     meta: {
         url: '4',
         title:
-            'title',
-        description: [], pageName: '1',
+            'Ремонт ДВС',
+        description: [], pageName: '4',
     },
 }
 const five: TPageData = {
@@ -90,8 +75,8 @@ const five: TPageData = {
     meta: {
         url: '5',
         title:
-            'title',
-        description: [], pageName: '1',
+            'Замена Тех.жидкостей',
+        description: [], pageName: '5',
     },
 }
 
@@ -125,14 +110,23 @@ export const getStaticProps: GetStaticProps<TProps, TParams> = async ctx => {
 
 
 const Service: NextPage<TProps> = ({ page }) => {
+    const [data, setData] = useState<any>([])
+    useEffect(() => {
+        getCategories().then(info => {
+            const res: [any] = info?.data
+            setData(res?.find((item) => item?.id === Number(page.meta.pageName)))
+        })
+    }, [page.meta.pageName])
 
-    const content = page.meta.description?.map((item) => {
+
+    const content = data?.services?.map((item: any) => {
         return <>
             {item?.title && <Text size={24} sizeMob={22} fontWeight={700}
                                   style={{ whiteSpace: 'pre-line', paddingBottom: '16px' }}>{item?.title}</Text>}
             {item?.text && <Text size={18} sizeMob={18} fontWeight={700}
                                  style={{ whiteSpace: 'pre-line', paddingBottom: '16px' }}>{item?.text}</Text>}
-            {item?.linkImg && <img src={item.linkImg} style={{ paddingBottom: '16px' }} alt={item?.linkImg} />}
+            {item?.linkImg &&
+            <img src={item?.linkImg?.name} style={{ paddingBottom: '16px' }} alt={item?.linkImg?.name} />}
         </>
     })
 
@@ -149,14 +143,14 @@ const Service: NextPage<TProps> = ({ page }) => {
 }
 
 const WrapperAddress = styled.div`
-display: grid;
-grid-row-gap: 16px;
+  display: grid;
+  grid-row-gap: 16px;
 
 `
 const WrapperLinkHome = styled.div`
-display: grid;
-grid-template-columns: 13px 1fr;
-grid-column-gap: 16px;
+  display: grid;
+  grid-template-columns: 13px 1fr;
+  grid-column-gap: 16px;
 
 `
 export default Service
