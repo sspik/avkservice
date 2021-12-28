@@ -8,6 +8,7 @@ import { getPhones, putPhones } from '../../src/api/query'
 
 
 const Calls: NextPage = () => {
+    const operator = 'Mr.Soshnikov'
     const [data, setData] = useState<any>([])
     useEffect(() => {
         getPhones().then(info => {
@@ -15,8 +16,6 @@ const Calls: NextPage = () => {
         })
     }, [])
 
-    const date = new Date(2021, 1, 28).toLocaleDateString()
-    const dateNow = new Date().toLocaleDateString()
 
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID', width: 70 },
@@ -30,8 +29,7 @@ const Calls: NextPage = () => {
             width: 150,
             renderCell: (params) => {
                 const onClick = (e: { stopPropagation: () => void }) => {
-                    e?.stopPropagation() // don't select this row after clicking
-
+                    e?.stopPropagation()
                     const api: GridApi = params.api
                     const thisRow: Record<string, GridCellValue> = {}
 
@@ -43,16 +41,25 @@ const Calls: NextPage = () => {
                         )
 
 
-                    data?.forEach((item: { id: string | number, call: boolean }) => {
-                        item?.id && item?.id === thisRow?.id && putPhones(item?.id, { ...item, call: !item?.call })
+                    data?.forEach(async (item: { id: string | number, call: boolean }) => {
+                        item?.id  && item?.id === thisRow?.id && await putPhones(item?.id, {
+                            ...item,
+                            call: true,
+                            dateCall: new Date().toLocaleString(),
+                            operator,
+                        })
+                        item?.id && item?.id === thisRow?.id && getPhones().then(info => {
+                            setData(info?.data)
+                        })
                     })
                 }
 
                 return <Button variant='contained' onClick={onClick}>Перезвонили</Button>
             },
         },
-        { field: 'date', headerName: 'Дата поступления заявки', width: 120 },
-        { field: 'dateNow', headerName: 'Дата ответа на заявку', width: 120 },
+        { field: 'date', headerName: 'Дата поступления заявки', width: 200 },
+        { field: 'dateCall', headerName: 'Дата ответа на заявку', width: 200 },
+        { field: 'operator', headerName: 'Кто перезвонил', width: 200 },
 
     ]
 
@@ -64,7 +71,6 @@ const Calls: NextPage = () => {
                     columns={columns}
                     pageSize={15}
                     rowsPerPageOptions={[1]}
-                    onCellClick={(e) => console.log(e.id)}
                     logLevel='error'
 
 
