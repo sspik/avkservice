@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react'
 import { Button, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material'
-import MaskedInput from 'react-text-mask'
 import { Text } from '@components'
 import { Styled } from './styled'
 import { Stars } from '@icons'

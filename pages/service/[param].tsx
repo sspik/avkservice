@@ -125,8 +125,12 @@ const Service: NextPage<TProps> = ({ page }) => {
                                   style={{ whiteSpace: 'pre-line', paddingBottom: '16px' }}>{item?.title}</Text>}
             {item?.text && <Text size={18} sizeMob={18} fontWeight={700}
                                  style={{ whiteSpace: 'pre-line', paddingBottom: '16px' }}>{item?.text}</Text>}
-            {item?.linkImg &&
-            <img src={item?.linkImg?.name} style={{ paddingBottom: '16px' }} alt={item?.linkImg?.name} />}
+            <div>{item?.linkImg &&
+            <img src={item?.linkImg} style={{
+                paddingBottom: '16px', height: 'auto',
+                width: '100%',
+                maxWidth: '700px',
+            }} alt={item?.linkImg} />}</div>
         </>
     })
 

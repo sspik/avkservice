@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import { Banner, CameraView, Cards, LayoutPage, Stock } from '@components'
 import { theme } from '../src'
 import Head from 'next/head'
-import { getAPI, getCategories, queryAPI } from '../src/api/query'
 
 const Home: NextPage = () => {
     const cards = [
