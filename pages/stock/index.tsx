@@ -10,7 +10,7 @@ const Stock: NextPage = () => (
 
     <LayoutPage>
         <WrapperAddress>
-            <Link href={`${process.env.BACKEND_URL}/`} passHref><a><WrapperLinkHome><Arrow />Назад</WrapperLinkHome></a></Link>
+            <Link href={`/`} passHref><a><WrapperLinkHome><Arrow />Назад</WrapperLinkHome></a></Link>
             <Text size={18} sizeMob={18}>Идейные соображения высшего порядка, а также консультация с широким активом
                 влечет за собой процесс внедрения и модернизации соответствующий условий активизации. Не следует, однако
                 забывать, что консультация с широким активом представляет собой интересный эксперимент проверки позиций,

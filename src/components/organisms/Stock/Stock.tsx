@@ -29,8 +29,8 @@ export const Stock: FC<TStockProps> = ({ imgLink, description, percent, alt }) =
                           justifySelf: 'center',
                       }}>{percent}</Text>
             </Styled.WrapperStock>
-            <Styled.WrapperSpacing><Link href={`${process.env.BACKEND_URL}/stock`} passHref><Styled.CustomButton as='a'>Все
-                акции</Styled.CustomButton></Link></Styled.WrapperSpacing>
+            {/*<Styled.WrapperSpacing><Link href='/stock' passHref><Styled.CustomButton as='a'>Все*/}
+            {/*    акции</Styled.CustomButton></Link></Styled.WrapperSpacing>*/}
         </>
     )
 }

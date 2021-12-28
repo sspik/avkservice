@@ -12,7 +12,6 @@ function IndexPage() {
                         src='https://cdn.envybox.io/widget/cbk.js?wcb_code=730acf1799c871b0c2610a6ea3716681'
                         charSet='UTF-8' async />
             </Head>
-            <p>Hello world!</p>
         </div>
     )
 }

@@ -14,7 +14,7 @@ const Home: NextPage = () => {
             columnWidthTablet: 3,
             textColor: theme.colors.white.step0,
             link: `/service/1`,
-            alt: 'awdawdawdaw',
+            alt: 'КОМПЬЮТЕРНАЯ ДИАГНОСТИКА',
         },
         {
             id: 2,
@@ -23,7 +23,7 @@ const Home: NextPage = () => {
             cardColor: theme.colors.gray.step2,
             columnWidthDesktop: 3,
             link: `/service/2`,
-            alt: 'awdawdawdaw',
+            alt: 'РЕМОНТ ХОДОВОЙ ЧАСТИ',
 
         },
         {
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
             textColor: theme.colors.white.step0,
             columnWidthDesktop: 2,
             link: `/service/3`,
-            alt: 'awdawdawdaw',
+            alt: 'РЕМОНТ КПП',
         },
         {
             id: 4,
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
             cardColor: theme.colors.gray.step2,
             columnWidthDesktop: 2,
             link: `/service/4`,
-            alt: 'awdawdawdaw',
+            alt: 'РЕМОНТ ДВС',
         },
         {
             id: 5,
@@ -53,7 +53,7 @@ const Home: NextPage = () => {
             textColor: theme.colors.white.step0,
             columnWidthDesktop: 2,
             link: `/service/5`,
-            alt: 'awdawdawdaw',
+            alt: 'ЗАМЕНА ТЕХ.ЖИДКОСТЕЙ',
         },
     ]
 
