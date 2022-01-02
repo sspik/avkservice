@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import { Styled } from './styled'
 import { Text, DesktopWrapper } from '@components'
 import { theme } from '@theme'
-import Link from 'next/link'
 
 type TStockProps = {
     imgLink: string
