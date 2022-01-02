@@ -5,9 +5,14 @@ export const getAPI = axios.post('http://dev.avksrv.ru/admin/login', {
     'password': 'WhoFuckMe!100505',
 })
 
+export const getAuth = (login: string, password: string) => axios.post('http://dev.avksrv.ru/admin/login', {
+    'email': login,
+    'password': password,
+})
+
 export const getCategories = () => axios.get('http://dev.avksrv.ru/category-services')
 export const getPhones = () => axios.get('http://dev.avksrv.ru/callphones')
-export const putPhones = (id: string | number , data: any) => axios.put(`http://dev.avksrv.ru/callphones/${id}`, data)
+export const putPhones = (id: string | number, data: any) => axios.put(`http://dev.avksrv.ru/callphones/${id}`, data)
 
 export const queryAPI = (
     link: string,

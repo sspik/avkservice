@@ -3,13 +3,19 @@ import { LayoutPage } from '@components'
 import styled from 'styled-components'
 import { DataGrid, GridColDef, GridApi, GridCellValue } from '@mui/x-data-grid'
 import React, { useEffect, useState } from 'react'
-import { Button } from '@mui/material'
-import { getPhones, putPhones } from '../../src/api/query'
+import { Button, TextField } from '@mui/material'
+import { getAuth, getPhones, putPhones } from '../../src/api/query'
 
 
 const Calls: NextPage = () => {
-    const operator = 'Mr.Soshnikov'
+    const operator = 'Operator'
+    const [auth, setAuth] = useState(false)
     const [data, setData] = useState<any>([])
+    const [login, setLogin] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleAuth = () => getAuth(login, password).then(data => setAuth(!!data)).catch((data) => alert('Неверный логин или пароль'))
+
     useEffect(() => {
         getPhones().then(info => {
             setData(info?.data)
@@ -22,6 +28,7 @@ const Calls: NextPage = () => {
         { field: 'lastName', headerName: 'Имя', width: 130 },
         { field: 'phoneNumber', headerName: 'Номер телефона', width: 200 },
         { field: 'call', headerName: 'Статус', width: 130 },
+        { field: 'street', headerName: 'Запись', width: 130 },
         {
             field: 'action',
             headerName: 'Перезвонили',
@@ -42,13 +49,13 @@ const Calls: NextPage = () => {
 
 
                     data?.forEach(async (item: { id: string | number, call: boolean }) => {
-                        item?.id  && item?.id === thisRow?.id && await putPhones(item?.id, {
+                        item?.id && !item?.call && item?.id === thisRow?.id && await putPhones(item?.id, {
                             ...item,
                             call: true,
                             dateCall: new Date().toLocaleString(),
                             operator,
                         })
-                        item?.id && item?.id === thisRow?.id && getPhones().then(info => {
+                        !item?.call && item?.id && item?.id === thisRow?.id && getPhones().then(info => {
                             setData(info?.data)
                         })
                     })
@@ -66,7 +73,7 @@ const Calls: NextPage = () => {
     return <LayoutPage>
         <WrapperAddress>
             <div>
-                <DataGrid
+                {auth ? <DataGrid
                     rows={data}
                     columns={columns}
                     pageSize={15}
@@ -74,7 +81,23 @@ const Calls: NextPage = () => {
                     logLevel='error'
 
 
-                />
+                /> : <WrapperLogin>
+                    <TextField
+                        value={login}
+                        onChange={(e) => setLogin(e.target.value)}
+                        id='Name'
+                        label='Name'
+                    />
+                    <TextField
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        id='Password'
+                        label='Password'
+                        type='password'
+                    />
+                    <Button variant='contained' onClick={handleAuth}>Отправить</Button>
+                </WrapperLogin>}
+
             </div>
         </WrapperAddress>
     </LayoutPage>
@@ -84,6 +107,13 @@ const WrapperAddress = styled.div`
   display: grid;
   height: 960px;
   margin-bottom: 96px;
+
+`
+const WrapperLogin = styled.div`
+  margin: 24px;
+  display: grid;
+  grid-row-gap: 24px;
+  height: 150px;
 
 `
 export default Calls

@@ -6,6 +6,7 @@ import { Arrow } from '../../src'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { getCategories } from '../../src/api/query'
+import { Skeleton } from '@mui/material'
 
 
 type TPageData = {
@@ -139,8 +140,15 @@ const Service: NextPage<TProps> = ({ page }) => {
             <Link href={`/`} passHref><a><WrapperLinkHome><Arrow />Назад</WrapperLinkHome></a></Link>
             <Text size={32} sizeMob={24} fontWeight={700}
                   style={{ whiteSpace: 'pre-line' }}>{page.meta.title}</Text>
-            <Text size={18} sizeMob={18} fontWeight={700}
-                  style={{ whiteSpace: 'pre-line' }}>{content}</Text>
+
+            {content ? <Text size={18} sizeMob={18} fontWeight={700}
+                             style={{ whiteSpace: 'pre-line' }}>{content}</Text> :
+                <div>
+                    <Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton />
+                    <Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton />
+                    <Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton />
+                    <Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton /><Skeleton />
+                </div>}
             <div style={{ height: '96px' }} />
         </WrapperAddress>
     </LayoutPage>
