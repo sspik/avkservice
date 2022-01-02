@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { Banner, CameraView, Cards, LayoutPage, Stock } from '@components'
 import { theme } from '../src'
 import Head from 'next/head'
+import Script from 'next/script'
 
 const Home: NextPage = () => {
     const cards = [
@@ -101,9 +102,6 @@ const Home: NextPage = () => {
                 <title>AVK service - автосервисы в Подольске</title>
                 <meta name='viewport' content='initial-scale=1.0, width=device-width' />
                 <link rel='stylesheet' href='https://cdn.envybox.io/widget/cbk.css' />
-                <script type='text/javascript'
-                        src='https://cdn.envybox.io/widget/cbk.js?wcb_code=730acf1799c871b0c2610a6ea3716681'
-                        charSet='UTF-8' async />
             </Head>
             <LayoutPage>
                 <div>
@@ -119,9 +117,11 @@ const Home: NextPage = () => {
                     <div style={{ height: '96px' }} />
                 </div>
             </LayoutPage>
+            <Script strategy='afterInteractive'
+                    src='https://cdn.envybox.io/widget/cbk.js?wcb_code=730acf1799c871b0c2610a6ea3716681' />
         </>
 
     )
-}
+};
 
 export default Home
