@@ -27,4 +27,4 @@ jobs:
       - run: npm run build
       # Deploy
       - run: cd public && rsync -rv -e "ssh -o StrictHostKeyChecking=no" --archive --compress --delete . www_dev@${{ secrets.IP }}:/home/www_dev/frontend/
-      - run: ssh www_dev@${{ secrets.RSA_IP }} "pm2 restart frontend_dev" 
+      - run: ssh www_dev@${{ secrets.IP }} "pm2 restart frontend_dev" 
