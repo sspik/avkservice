@@ -13,7 +13,7 @@ export const Navigation = (): JSX.Element => (
             <Styled.MobileWrapper>
                 <Link href='/' passHref><a><AvkMobile /></a></Link>
             </Styled.MobileWrapper>
-            <Styled.MobileWrapper style={{ justifySelf: 'right' }}>
+            <Styled.MobileWrapper style={{ justifySelf: 'right', paddingTop: '6px' }}>
                 <a href='tel:+74955321922'>
                     <Text size={16} fontWeight={700}>
                         +7(495)532-19-22
