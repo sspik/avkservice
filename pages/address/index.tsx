@@ -9,7 +9,7 @@ const Address: NextPage = () => (
 
     <LayoutPage>
         <WrapperAddress>
-            <Link href={`${process.env.BACKEND_URL}/`} passHref><a><WrapperLinkHome><Arrow />Назад</WrapperLinkHome></a></Link>
+            <Link href="/" passHref><a><WrapperLinkHome><Arrow />Назад</WrapperLinkHome></a></Link>
             <Text size={32} sizeMob={24} fontWeight={700}>Адреса</Text>
             <Text size={24} sizeMob={18} fontWeight={700}>г.Подольск, ул.Ульяновых, 12</Text>
             <iframe src='https://api-maps.yandex.ru/frame/v1/-/CCUuYSH6sD' width='100%' height='320' frameBorder='0' />

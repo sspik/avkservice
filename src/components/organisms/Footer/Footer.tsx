@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Styled } from './styled'
 import { Text, GridLayout } from '@components'
-import { AvkLogoWhite } from '../../../icons/AvkWhite'
+import { AvkLogoWhite } from '@icons'
 import Link from 'next/link'
 
 type TFooterProps = {
@@ -20,7 +20,8 @@ type TFooterProps = {
 export const Footer: FC<TFooterProps> = ({ items }): JSX.Element => {
     const blocks = items?.map(({ link, title, id }) => {
         return link && title &&
-            <Link key={id} href={link} passHref><a>{title[0].toUpperCase() + title.toLowerCase().slice(1)}</a></Link>
+            <Link key={id} href={link} passHref
+                  prefetch={false}><a>{title[0].toUpperCase() + title.toLowerCase().slice(1)}</a></Link>
     })
 
     return (
@@ -30,8 +31,12 @@ export const Footer: FC<TFooterProps> = ({ items }): JSX.Element => {
                     <Styled.WrapperLink>
                         {blocks}
                     </Styled.WrapperLink>
-                    <a href='tel:+74955321922'><Text size={24}>+7 (495) 532-19-22</Text></a>
-                    <Link href={`${process.env.BACKEND_URL}/`} passHref><a><AvkLogoWhite /></a></Link>
+                    <div>
+                        <a href='tel:+74955321922'><Text size={24}>+7 (495) 532-19-22</Text></a>
+                        <br />
+                        <a href='tel:+79263394243'><Text size={24}>+7 (926) 339-42-43</Text></a>
+                    </div>
+                    <Link href='/' passHref prefetch={false}><a><AvkLogoWhite /></a></Link>
                 </Styled.Wrapper>
             </GridLayout>
         </Styled.Container>
